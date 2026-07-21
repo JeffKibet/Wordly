@@ -73,3 +73,20 @@ audio{
     color: red;
     font-weight: bold;
 }
+
+#result p{
+    line-height: 1.6;
+}
+
+#result strong{
+    color: #2f5d50;
+}
+
+#result a{
+    color: #2f5d50;
+    text-decoration: none;
+}
+
+#result a:hover{
+    text-decoration: underline;
+}

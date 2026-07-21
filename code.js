@@ -54,7 +54,7 @@ function searchWord(word) {
 
             if(audioFile && audioFile.audio) {
                 audio = `
-                <h3>Pronunciation</h3>
+                <h3>Pronunciation Audio</h3>
                 <audio controls>
                 <source src="${audioFile.audio}" type="audio.mpeg">
                 Your broser does not support audio
@@ -66,13 +66,12 @@ function searchWord(word) {
         result.innerHTML = `
         <h2>${wordName}</h2>
         <p><strong>Pronunciation:</strong> ${phonetic}</p>
-        <p><strong>Part of speech</strong> ${partOfSpeech}</p>
+        <p><strong>Part of Speech</strong> ${partOfSpeech}</p>
         <p><strong>Definition:</strong> ${definition}</p>
         <p><strong>Example</strong> ${example}</p>
-        <p><strong>synonyms</strong> ${synonyms}</p>
+        <p><strong>Synonyms</strong> ${synonyms}</p>
         <p><strong>Source</strong>
-        <a href="${entry.sourceUrls[0]}" target="_blank"></a>
-         View source
+        <a href="${entry.sourceUrls[0]}" target="_blank">View Source</a>
         </p>
 
         ${audio}
