@@ -5,3 +5,13 @@ body {
     padding: 0;
 }
 
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+.jeff{
+    background-color: gray;
+    justify-content: center;
+}
