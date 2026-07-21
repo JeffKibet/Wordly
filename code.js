@@ -62,7 +62,7 @@ function searchWord(word) {
 
     })
 
-    .catch(error =>{
+    .catch(error => {
         result.innerHTML = `
         <p class = "error">
         Sorry, the word could not be found
