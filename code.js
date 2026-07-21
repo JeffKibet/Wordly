@@ -13,3 +13,17 @@ if(word === "") {
 }
     searchWord(word)
 })
+
+function searchWord(word) {
+    fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+    .then(response =>{
+        if(!response.ok) {
+            throw new Error("Word not found")
+        }
+        return response.json();
+    })
+    .then(data =>{
+        const entry = data[0];
+        
+    })
+}
