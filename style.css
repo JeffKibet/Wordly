@@ -24,3 +24,8 @@ header {
 .jeff2 :hover{
     background-color: #555;
 }
+
+.container{
+    border-radius: 8px;
+    text-align: center;
+}
