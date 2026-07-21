@@ -27,7 +27,9 @@ function searchWord(word) {
 
         const wordName = entry.word;
 
-        const phonetic = entry.phonetic || "Not available";
+        const phonetic = entry.phonetic ||
+        entry.phonetics.find(item => item.text)?.text ||
+        "Not available";
 
         const meaning = entry.meanings[0];
         if(!meaning) {
@@ -37,24 +39,25 @@ function searchWord(word) {
 
         const partOfSpeech = meaning.partOfSpeech || "Not available";
 
-        const definition = meaning.definitions?.[0]?.definition || "Nodefinition available";
+        const definition = meaning.definitions?.[0]?.definition || "No definition available";
 
-        const example = meaning.definitions?.[0]?.example || "No examlple available";
+        const example = meaning.definitions?.[0]?.example || "No example available";
 
-        const synonyms = meaning.synonyms?.length
-        ? meaning.synonyms.join(",")
-        : "No synonyms available";
+        const synonyms = meaning.definitions[0].synonyms?.length
+        ? meaning.definitions[0].synonyms.join(",")
+        : "No synonyms available"
 
         let audio = "";
 
         if (entry.phonetics.length > 0 ) {
             const audioFile = entry.phonetics.find(item => item.audio !=="");
 
-            if(audioFile) {
+            if(audioFile && audioFile.audio) {
                 audio = `
                 <h3>Pronunciation</h3>
                 <audio controls>
-                <source src="${audioFile.audio}" type="audio.mpeg"
+                <source src="${audioFile.audio}" type="audio.mpeg">
+                Your broser does not support audio
                 </audio>
                 `;
             }
@@ -62,11 +65,15 @@ function searchWord(word) {
 
         result.innerHTML = `
         <h2>${wordName}</h2>
-        <p><strong>Pronunciation:</strong>${phonetic}</p>
-        <p><strong>Part of speech</strong>${partOfSpeech}</p>
-        <p><strong>Definition:</strong>${definition}</p>
-        <p><strong>Example</strong>${example}</p>
-        <p><strong>synonyms</strong>${synonyms}</p>
+        <p><strong>Pronunciation:</strong> ${phonetic}</p>
+        <p><strong>Part of speech</strong> ${partOfSpeech}</p>
+        <p><strong>Definition:</strong> ${definition}</p>
+        <p><strong>Example</strong> ${example}</p>
+        <p><strong>synonyms</strong> ${synonyms}</p>
+        <p><strong>Source</strong>
+        <a href="${entry.sourceUrls[0]}" target="_blank"></a>
+         View source
+        </p>
 
         ${audio}
         `;
