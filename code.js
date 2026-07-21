@@ -1,6 +1,6 @@
 const form = document.getElementById("searchForm")
 const wordInput = document.getElementById("wordInput")
-const result = document.getElemenrById("result")
+const result = document.getElementById("result")
 
 form.addEventListener("submit", function(event) {
 event.preventDefault();
