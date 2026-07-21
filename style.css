@@ -21,12 +21,16 @@ header {
     overflow: hidden;
 }
 .search{
-    background-color: gray;
-    justify-content: center;
+    padding: 10px 18px;
+    border: none;
     border-radius: 8px;
+    background-color: #2f5d50;
+    color: white;
+    cursor: pointer;
+    margin-left:10px;
 }
 .search:hover{
-    background-color: #555;
+    background-color: #24483d;
 }
 
 .container{
