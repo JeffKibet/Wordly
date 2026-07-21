@@ -22,8 +22,19 @@ function searchWord(word) {
         }
         return response.json();
     })
-    .then(data =>{
+    .then(data => {
         const entry = data[0];
-        
+        const wordName = entry.word;
+        const phonetic = entry.phonetic || "Not available";
+        const meaning = entry.meaning[0];
+        const partOfSpeech = meaning.partOfSpeech;
+        const definition = meaning.definitions[0].definition;
+        const example = meaning.definitions[0].example || "No examlple available";
+        const synonyms = meaning.synonyms.length > 0
+        ? meaning.synonyms.join(",")
+        : "No synonyms available";
+
+        let audio = "";
+
     })
 }
