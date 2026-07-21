@@ -49,5 +49,24 @@ function searchWord(word) {
             }
         }
 
+        result.innerHTML = `
+        <h2>${wordName}</h2>
+        <p><strong>Pronunciation:</strong>${phonetic}</p>
+        <p><strong>Part of speech</strong>${partOfSpeech}</p>
+        <p><strong>Definition:</strong>${definition}</p>
+        <p><strong>Example</strong>${example}</p>
+        <p><strong>synonyms</strong>${synonyms}</p>
+
+        ${audio}
+        `;
+
     })
+
+    .catch(error =>{
+        result.innerHTML = `
+        <p class = "error">
+        Sorry, the word could not be found
+        </p>
+        `;
+    });
 }
