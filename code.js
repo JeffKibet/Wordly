@@ -36,5 +36,18 @@ function searchWord(word) {
 
         let audio = "";
 
+        if(entry.phonetics.legth > 0 ) {
+            const audioFile = entry.phonetics.find(item.audio !=="");
+
+            if(audioFile) {
+                audio = `
+                <h3>Pronunciation</h3>
+                <audio controls>
+                <source src="${audioFile.audio}" type="audio.mpeg"
+                </audio>
+                `;
+            }
+        }
+
     })
 }
