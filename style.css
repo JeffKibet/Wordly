@@ -16,12 +16,12 @@ header {
     justify-content: center;
     border-radius: 8px;
 }
-.jeff2{
+.search{
     background-color: gray;
     justify-content: center;
     border-radius: 8px;
 }
-.jeff2 :hover{
+.search :hover{
     background-color: #555;
 }
 
