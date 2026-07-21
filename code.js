@@ -5,7 +5,7 @@ const result = document.getElementById("result")
 form.addEventListener("submit", function(event) {
 event.preventDefault();
 
-const word = wordInput.ariaValueMax.trim();
+const word = wordInput.value.trim();
 
 if(word === "") {
     result.innerHTML ="<p class='error'>Please enter a word.</p>";
@@ -24,20 +24,31 @@ function searchWord(word) {
     })
     .then(data => {
         const entry = data[0];
+
         const wordName = entry.word;
+
         const phonetic = entry.phonetic || "Not available";
-        const meaning = entry.meaning[0];
-        const partOfSpeech = meaning.partOfSpeech;
-        const definition = meaning.definitions[0].definition;
-        const example = meaning.definitions[0].example || "No examlple available";
-        const synonyms = meaning.synonyms.length > 0
+
+        const meaning = entry.meanings[0];
+        if(!meaning) {
+            result.innerHTML = "<P class='error'>No definition found</P>"
+            return;
+        }
+
+        const partOfSpeech = meaning.partOfSpeech || "Not available";
+
+        const definition = meaning.definitions?.[0]?.definition || "Nodefinition available";
+
+        const example = meaning.definitions?.[0]?.example || "No examlple available";
+
+        const synonyms = meaning.synonyms?.length
         ? meaning.synonyms.join(",")
         : "No synonyms available";
 
         let audio = "";
 
-        if(entry.phonetics.legth > 0 ) {
-            const audioFile = entry.phonetics.find(item.audio !=="");
+        if (entry.phonetics.length > 0 ) {
+            const audioFile = entry.phonetics.find(item => item.audio !=="");
 
             if(audioFile) {
                 audio = `
@@ -63,6 +74,9 @@ function searchWord(word) {
     })
 
     .catch(error => {
+
+        console.error(error);
+
         result.innerHTML = `
         <p class = "error">
         Sorry, the word could not be found
