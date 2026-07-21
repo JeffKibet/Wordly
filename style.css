@@ -1,31 +1,38 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8fafc;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+    background-color: #2f5d50;
+    color: white;
+    padding: 20px;
     text-align: center;
 }
 .jeff{
-    background-color: gray;
-    justify-content: center;
+    width:80%;
+    max-width: 700px;
+    margin:40px auto;
+    background-color:white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    overflow: hidden;
 }
 .search{
     background-color: gray;
     justify-content: center;
     border-radius: 8px;
 }
-.search :hover{
+.search:hover{
     background-color: #555;
 }
 
 .container{
-    border-radius: 8px;
+    padding: 25px;
     text-align: center;
+}
+h2{
+    color: #333;
 }
